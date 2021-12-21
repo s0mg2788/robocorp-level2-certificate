@@ -12,11 +12,6 @@ Library            RPA.FileSystem
 Library            RPA.Robocorp.Process
 
 *** Variables ***
-${GLOBAL_WAIT_SIZE_S}=     5s
-${GLOBAL_WAIT_SIZE_M}=     10s
-${GLOBAL_WAIT_SIZE_L}=     30s
-${GLOBAL_WAIT_SIZE_XL}=    60s
-
 ${GLOBAL_RETRY_AMOUNT}=    3x
 ${GLOBAL_RETRY_INTERVAL}=    1s
 
@@ -41,7 +36,7 @@ Open the robot order website
     #Open browser
     Open Chrome Browser    ${secret}[url]
     Maximize Browser Window
-    Wait Until Element Is Visible    id:username    ${GLOBAL_WAIT_SIZE_XL}
+    Wait Until Element Is Visible    id:username    60
     Click Element    css:li.nav-item:nth-child(2)
 
 *** Keywords ***
@@ -56,7 +51,7 @@ Get orders
 Close the annoying modal
     #Close popup when moving to Order Robot tab
     Click Button    css:button.btn.btn-dark
-    Wait Until Element Is Visible    id:head    ${GLOBAL_WAIT_SIZE_M}
+    Wait Until Element Is Visible    id:head    10
 
 *** Keywords ***
 Fill the form
@@ -75,7 +70,7 @@ Preview the robot
 Submit the order
     #Click Submit
     Click Button    id:order
-    Wait Until Element Is Visible    id:receipt    ${GLOBAL_WAIT_SIZE_M}
+    Wait Until Element Is Visible    id:receipt    10
 
 *** Keywords ***
 Store the receipt as a PDF file
